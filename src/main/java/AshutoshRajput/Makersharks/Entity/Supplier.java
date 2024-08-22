@@ -17,18 +17,18 @@ public class Supplier {
     @Column(name = "supplier_id")
     private Long supplier_id;
 
-    @Column(name = "company_name", nullable = false)
+    @Column(name = "company_name")
     private String company_name;
 
-    @Column(name = "website", nullable = false)
+    @Column(name = "website")
     private String website;
 
-    @Column(name = "location", nullable = false)
+    @Column(name = "location")
     private String location;
 
-    @Column(name = "nature_of_business", nullable = false)
+    @Column(name = "nature_of_business")
     private String nature_of_business;
 
-    @Column(name = "manufacturing_processes", nullable = false)
+    @Column(name = "manufacturing_processes")
     private String manufacturing_processes;
 }
