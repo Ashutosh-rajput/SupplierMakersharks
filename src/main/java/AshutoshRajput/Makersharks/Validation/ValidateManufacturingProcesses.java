@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Documented
 @Constraint(validatedBy = ManufacturingProcessesValidation.class)
 public @interface ValidateManufacturingProcesses {
-    public String massage() default "Invalid manufacturing process:Possible values for POC: moulding, 3d_printing, casting, coating";
+    public String message() default "Invalid manufacturing process:Possible values for POC: moulding, 3d_printing, casting, coating";
 
     Class<?>[] groups() default { };
 

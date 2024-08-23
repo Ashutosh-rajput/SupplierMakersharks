@@ -27,8 +27,8 @@ public class SupplierServiceImpl implements SupplierServiceInterface {
 
     @Override
     public SupplierDTO createSupplier(SupplierDTO supplierDTO) {
-        if (supplierRepo.findbycompany_name(supplierDTO.getCompany_name()).isPresent()) {
-            logger.error("Supplier creation failed: Supplier already exists with company name: {}", supplierDTO.getCompany_name());
+        if (supplierRepo.findByCompanyName(supplierDTO.getCompanyName()).isPresent()) {
+            logger.error("Supplier creation failed: Supplier already exists with company name: {}", supplierDTO.getCompanyName());
             throw new ResourceAlreadyExistsException("Supplier already exists with this company name.");
         }
         Supplier supplier = supplierMapper.SupplierDTOtoSupplier(supplierDTO);
@@ -62,7 +62,7 @@ public class SupplierServiceImpl implements SupplierServiceInterface {
     public List<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes) {
         logger.info("Fetching list of suppliers by location: {}, nature of business: {}, manufacturing processes: {}",
                 location, nature_of_business, manufacturing_processes);
-        List<Supplier> suppliers = supplierRepo.findbylocationAndnature_of_businessAndmanufacturing_processes(
+        List<Supplier> suppliers = supplierRepo.findByLocationAndNatureOfBusinessAndManufacturingProcesses(
                 location, nature_of_business, manufacturing_processes);
         if (suppliers.isEmpty()) {
             logger.warn("No suppliers found for the given criteria.");

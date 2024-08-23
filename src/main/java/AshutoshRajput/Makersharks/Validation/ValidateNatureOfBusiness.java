@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Documented
 @Constraint(validatedBy = NatureOfBusinessValidator.class)
 public @interface ValidateNatureOfBusiness {
-    public String massage() default "Invalid nature of business:Possible values: small_scale, medium_scale, large_scale";
+    public String message() default "Invalid nature of business:Possible values: small_scale, medium_scale, large_scale";
 
     Class<?>[] groups() default { };
 
