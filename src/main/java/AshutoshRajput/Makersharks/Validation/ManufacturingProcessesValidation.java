@@ -10,8 +10,9 @@ public class ManufacturingProcessesValidation implements ConstraintValidator<Val
     @Override
     public boolean isValid(String manufacturing_process, ConstraintValidatorContext context) {
         List<String> manufacturing_processes = Arrays.asList("moulding", "3d_printing", "casting", "coating");
-        return manufacturing_processes.stream()
-                .anyMatch(process -> process.equalsIgnoreCase(manufacturing_process));
+        return manufacturing_processes.contains(manufacturing_process);
+//        return manufacturing_processes.stream()
+//                .anyMatch(process -> process.equalsIgnoreCase(manufacturing_process));
 
     }
 }

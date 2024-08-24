@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
+
 
 @Service
 public class SupplierServiceImpl implements SupplierServiceInterface {
@@ -27,6 +27,7 @@ public class SupplierServiceImpl implements SupplierServiceInterface {
 
     @Autowired
     private SupplierMapper supplierMapper;
+
 
     @Override
     public SupplierDTO createSupplier(SupplierDTO supplierDTO) {
@@ -62,7 +63,7 @@ public class SupplierServiceImpl implements SupplierServiceInterface {
     }
 
     @Override
-    public List<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes,int page,int size) {
+    public Page<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes,int page,int size) {
         logger.info("Fetching list of suppliers by location: {}, nature of business: {}, manufacturing processes: {}",
                 location, nature_of_business, manufacturing_processes);
         Pageable pageable = PageRequest.of(page, size);
@@ -74,11 +75,12 @@ public class SupplierServiceImpl implements SupplierServiceInterface {
             logger.info("Number of suppliers found: {}", suppliers.toList().size());
         }
 
-        return suppliers.stream().map(supplier -> supplierMapper.SuppliertoSupplierDTO(supplier)).toList();
+//        return suppliers.stream().map(supplier -> supplierMapper.SuppliertoSupplierDTO(supplier)).toList();
+        return suppliers.map(supplier -> supplierMapper.SuppliertoSupplierDTO(supplier));
     }
 
 //    For testing purpose
-    public SupplierServiceImpl(SupplierRepo supplierRepo){
-        this.supplierRepo=supplierRepo;
-    }
+//    public SupplierServiceImpl(SupplierRepo supplierRepo){
+//        this.supplierRepo=supplierRepo;
+//    }
 }

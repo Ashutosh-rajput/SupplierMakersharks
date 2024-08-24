@@ -30,7 +30,7 @@ public class SupplierRepoTest {
         Supplier supplier = new Supplier(null, "Orbis", "http://orbis.com", "Gwalior", "small_scale", "moulding");
         Supplier savedSupplier = supplierRepo.save(supplier);
 
-        Pageable pageable = PageRequest.of(1, 1);
+        Pageable pageable = PageRequest.of(0, 1);
         Page<Supplier> result = supplierRepo.findByLocationAndNatureOfBusinessAndManufacturingProcesses(
                 "Gwalior", "small_scale", "moulding",pageable);
         assertThat(result).isNotEmpty();

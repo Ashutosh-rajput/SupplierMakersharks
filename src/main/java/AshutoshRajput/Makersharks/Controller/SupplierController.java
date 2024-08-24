@@ -5,6 +5,7 @@ import AshutoshRajput.Makersharks.DTO.SupplierSearchDTO;
 import AshutoshRajput.Makersharks.Service.ServiceImpl.SupplierServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class SupplierController {
         return ResponseEntity.ok("Supplier deleted successfully with ID: "+ id);
     }
     @PostMapping("/supplier/get-supplier/{page}/{size}")
-    public ResponseEntity<List<SupplierDTO>> getsupplierbylocationandindustry(@RequestBody @Valid SupplierSearchDTO supplierSearchDTO,@PathVariable int page,@PathVariable int size){
+    public ResponseEntity<Page<SupplierDTO>> getsupplierbylocationandindustry(@RequestBody @Valid SupplierSearchDTO supplierSearchDTO, @PathVariable int page, @PathVariable int size){
         return ResponseEntity.ok(supplierService.ListOfSupplier(supplierSearchDTO.getLocation(),supplierSearchDTO.getNatureOfBusiness(),supplierSearchDTO.getManufacturingProcesses(),page,size));
     }
 

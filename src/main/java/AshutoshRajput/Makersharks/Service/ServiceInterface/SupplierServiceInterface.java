@@ -11,6 +11,6 @@ public interface SupplierServiceInterface {
     SupplierDTO createSupplier(SupplierDTO supplierDTO);
     SupplierDTO getSupplierByid(Long id);
     SupplierDTO deleteSupplier(Long id);
-    List<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes, int page, int size);
+    Page<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes, int page, int size);
 
 }
