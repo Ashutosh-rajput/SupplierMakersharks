@@ -44,14 +44,14 @@ public class SwaggerConfig {
                                 "   - **DELETE** `/api/supplier/{id}`\n" +
                                 "   - Deletes a supplier by ID.\n\n" +
                                 "4. **Search Suppliers**\n" +
-                                "   - **POST** `/api/supplier/get-supplier`\n" +
+                                "   - **POST** `/api/supplier/get-supplier/{page}/{size}`\n" +
                                 "   - Filter by `location`, `Nature Of Business`, and `Mufacturing Process`. Values must match allowed options.\n\n" +
-                                "**Database:** MySQL\n" +
+                                "**Database:** `MySQL` or `H2` \n" +
                                 "**Note:** All fields are required and must not be null.")
                         .version("1.0")
                         .contact(new Contact()
                                 .name("Ashutosh Rajput")
-                                .email("learncodewithdurgesh@example.com"))
+                                .email("rajputashutosh81@gmail.com"))
                 );
     }
 }

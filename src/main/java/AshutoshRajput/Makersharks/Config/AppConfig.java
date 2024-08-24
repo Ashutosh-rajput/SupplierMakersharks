@@ -20,8 +20,8 @@ public class AppConfig {
     public SupplierMapper supplierMapper(){
         return new SupplierMapper();
     }
-    @Bean
-    public SupplierServiceImpl supplierService(){
-        return new SupplierServiceImpl();
-    }
+//    @Bean
+//    public SupplierServiceImpl supplierService(){
+//        return new SupplierServiceImpl();
+//    }
 }

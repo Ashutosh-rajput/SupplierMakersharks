@@ -29,9 +29,9 @@ public class SupplierController {
         supplierService.deleteSupplier(id);
         return ResponseEntity.ok("Supplier deleted successfully with ID: "+ id);
     }
-    @PostMapping("/supplier/get-supplier")
-    public ResponseEntity<List<SupplierDTO>> getsupplierbylocationandindustry(@RequestBody @Valid SupplierSearchDTO supplierSearchDTO){
-        return ResponseEntity.ok(supplierService.ListOfSupplier(supplierSearchDTO.getLocation(),supplierSearchDTO.getNatureOfBusiness(),supplierSearchDTO.getManufacturingProcesses()));
+    @PostMapping("/supplier/get-supplier/{page}/{size}")
+    public ResponseEntity<List<SupplierDTO>> getsupplierbylocationandindustry(@RequestBody @Valid SupplierSearchDTO supplierSearchDTO,@PathVariable int page,@PathVariable int size){
+        return ResponseEntity.ok(supplierService.ListOfSupplier(supplierSearchDTO.getLocation(),supplierSearchDTO.getNatureOfBusiness(),supplierSearchDTO.getManufacturingProcesses(),page,size));
     }
 
 }

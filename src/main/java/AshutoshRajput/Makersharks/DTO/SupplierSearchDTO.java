@@ -19,4 +19,7 @@ public class SupplierSearchDTO {
     @NotBlank
     @ValidateManufacturingProcesses
     private String manufacturingProcesses;
+//    private int page;
+//    private int size;
+
 }

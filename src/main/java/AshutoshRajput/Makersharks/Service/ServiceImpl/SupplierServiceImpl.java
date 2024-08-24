@@ -8,6 +8,9 @@ import AshutoshRajput.Makersharks.Mapper.SupplierMapper;
 import AshutoshRajput.Makersharks.Repository.SupplierRepo;
 import AshutoshRajput.Makersharks.Service.ServiceInterface.SupplierServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,16 +62,23 @@ public class SupplierServiceImpl implements SupplierServiceInterface {
     }
 
     @Override
-    public List<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes) {
+    public List<SupplierDTO> ListOfSupplier(String location, String nature_of_business, String manufacturing_processes,int page,int size) {
         logger.info("Fetching list of suppliers by location: {}, nature of business: {}, manufacturing processes: {}",
                 location, nature_of_business, manufacturing_processes);
-        List<Supplier> suppliers = supplierRepo.findByLocationAndNatureOfBusinessAndManufacturingProcesses(
-                location, nature_of_business, manufacturing_processes);
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Supplier> suppliers = supplierRepo.findByLocationAndNatureOfBusinessAndManufacturingProcesses(
+                location, nature_of_business, manufacturing_processes, pageable);
         if (suppliers.isEmpty()) {
             logger.warn("No suppliers found for the given criteria.");
         } else {
-            logger.info("Number of suppliers found: {}", suppliers.size());
+            logger.info("Number of suppliers found: {}", suppliers.toList().size());
         }
+
         return suppliers.stream().map(supplier -> supplierMapper.SuppliertoSupplierDTO(supplier)).toList();
+    }
+
+//    For testing purpose
+    public SupplierServiceImpl(SupplierRepo supplierRepo){
+        this.supplierRepo=supplierRepo;
     }
 }
